@@ -47,7 +47,7 @@ public class ServletDownload extends HttpServlet {
 //        String fullFileName = getServletContext().getRealPath("F:\\workspace\\myworkspace\\integrated-platform\\platform-msc\\src\\main\\webapp\\download/mp3/" + filename);  
         //System.out.println(fullFileName);  
         //读取文件  
-        InputStream in = new FileInputStream("F:\\workspace\\myworkspace\\integrated-platform\\platform-msc\\src\\main\\webapp\\download/mp3/" + filename);  
+        InputStream in = new FileInputStream("F:\\workspace\\git\\integrated-platform\\platform-msc\\src\\main\\webapp\\download/mp3/" + filename);  
         OutputStream out = response.getOutputStream();  
           
         //写文件  

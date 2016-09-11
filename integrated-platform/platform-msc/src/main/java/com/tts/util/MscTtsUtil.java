@@ -31,7 +31,7 @@ public class MscTtsUtil {
 	/**
 	 * 合成
 	 */
-	public void Synthesize(String text,String voiceName) {
+	public void Synthesize(String text,String voiceName,String speed) {
 		
 		
 		SpeechSynthesizer speechSynthesizer = SpeechSynthesizer
@@ -55,7 +55,7 @@ public class MscTtsUtil {
 //		speechSynthesizer.setParameter(SpeechConstant.VOICE_NAME, "xiaoqian");//东北
 		speechSynthesizer.setParameter(SpeechConstant.VOICE_NAME, voiceName);
 		// 设置语速，范围0~100
-		speechSynthesizer.setParameter(SpeechConstant.SPEED, "65");
+		speechSynthesizer.setParameter(SpeechConstant.SPEED, speed);
 		// 设置语调，范围0~100
 		speechSynthesizer.setParameter(SpeechConstant.PITCH, "50");
 		speechSynthesizer.setParameter(SpeechConstant.ENGINE_TYPE, "cloud");
@@ -66,7 +66,7 @@ public class MscTtsUtil {
 		
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String fileName = voiceName;
-		speechSynthesizer.synthesizeToUri(text, "F:\\workspace\\myworkspace\\integrated-platform\\platform-msc\\src\\main\\webapp\\download\\"+fileName+".pcm",
+		speechSynthesizer.synthesizeToUri(text, "F:\\workspace\\git\\integrated-platform\\platform-msc\\src\\main\\webapp\\download\\"+fileName+".pcm",
 				synthesizeToUriListener);
 	}
 	
@@ -103,7 +103,7 @@ public class MscTtsUtil {
 	
 	private void convert() throws Exception{
 		List<String> pcmList = new ArrayList<String>();
-		String dirpath = "F:\\workspace\\myworkspace\\integrated-platform\\platform-msc\\src\\main\\webapp\\download\\";
+		String dirpath = "F:\\workspace\\git\\integrated-platform\\platform-msc\\src\\main\\webapp\\download\\";
 		pcmList = FileUtil.getFiles(dirpath,pcmList, "pcm");
 		//pcm to wav
 		System.out.println(pcmList.size());

@@ -26,17 +26,24 @@
 			$.ajax({
 				url: "TTS?type=tts",
 				type: 'POST',
+// 				contentType:"application/json",
+// 				dataType: 'json',
 				data: {
 					text:$("#mtext").val(),
-					voiceName:$("#voiceName").val()
+					voiceName:$("#voiceName").val(),
+					pitch: "50",
+				    speed: $("#speed").val(),
+				    volume: "50"
 				},
 				timeout: 10000,
-				success:function(data1){
+				success:function(data){
 					alert("合成命令已发出，合成需要若干分钟，请稍作等待再下载对应的语音文件");
 				},
-				error:function(){
-					alert("合成失败");
-				}
+				error:function(XMLHttpRequest, textStatus, errorThrown) {
+					 alert(XMLHttpRequest.status);
+					 alert(XMLHttpRequest.readyState);
+					 alert(textStatus);
+					   }
 			});
 // 			$("#myform").submit();
 		});
@@ -78,6 +85,12 @@
 				</td>
 			</tr>
 			<tr>
+				<td>语速：</td>
+				<td>
+					<input type="text" value="65" name="speed" id="speed" />
+				</td>
+			</tr>
+			<tr>
 				<td></td>
 				<td><input id="btn" type="button" value="合成" /></td>
 			</tr>
@@ -87,6 +100,9 @@
 			</tr>
 		</table>
 	</form>
+	<div>
+		<span id="result"></span>
+	</div>
 	<div style="margin-top: 60px;margin-left: 100px;">
 		<a target="_blank" style="margin-left: 50px;" href="ServletDownload?filename=vinn.mp3">下载楠楠的语音</a>
 		<a target="_blank" style="margin-left: 50px;" href="ServletDownload?filename=aisjinger.mp3">下载小婧的语音</a>
